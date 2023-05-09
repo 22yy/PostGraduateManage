@@ -1,0 +1,19 @@
+{
+    "RECORDS": [
+        {
+            "tid": "4",
+            "tname": "李玉民",
+            "password": "123"
+        },
+        {
+            "tid": "6",
+            "tname": "admin",
+            "password": "123"
+        },
+        {
+            "tid": "13",
+            "tname": "张三",
+            "password": "123"
+        }
+    ]
+}

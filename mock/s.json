@@ -1,0 +1,69 @@
+{
+    "RECORDS": [
+        {
+            "sid": "1",
+            "sname": "阮健乘",
+            "password": "1234"
+        },
+        {
+            "sid": "2",
+            "sname": "张四",
+            "password": "123"
+        },
+        {
+            "sid": "3",
+            "sname": "李四",
+            "password": "1234"
+        },
+        {
+            "sid": "4",
+            "sname": "彭昊辉",
+            "password": "123456"
+        },
+        {
+            "sid": "6",
+            "sname": "林春霞",
+            "password": "123"
+        },
+        {
+            "sid": "7",
+            "sname": "董一超",
+            "password": "12345"
+        },
+        {
+            "sid": "8",
+            "sname": "董超",
+            "password": "123"
+        },
+        {
+            "sid": "9",
+            "sname": "张千",
+            "password": "10086"
+        },
+        {
+            "sid": "10",
+            "sname": "李万",
+            "password": "10085"
+        },
+        {
+            "sid": "14",
+            "sname": "薇尔莉特",
+            "password": "123"
+        },
+        {
+            "sid": "21",
+            "sname": "庄亮",
+            "password": "123"
+        },
+        {
+            "sid": "22",
+            "sname": "钟平",
+            "password": "1234"
+        },
+        {
+            "sid": "23",
+            "sname": "李煜豪",
+            "password": "123"
+        }
+    ]
+}

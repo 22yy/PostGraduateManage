@@ -1,0 +1,29 @@
+{
+    "RECORDS": [
+        {
+            "cid": "7",
+            "cname": "数据结构",
+            "ccredit": "6"
+        },
+        {
+            "cid": "8",
+            "cname": "组合数学",
+            "ccredit": "3"
+        },
+        {
+            "cid": "9",
+            "cname": "计算机网络",
+            "ccredit": "5"
+        },
+        {
+            "cid": "10",
+            "cname": "计算机组成原理",
+            "ccredit": "5"
+        },
+        {
+            "cid": "11",
+            "cname": "RJC教你做选课系统",
+            "ccredit": "10"
+        }
+    ]
+}
