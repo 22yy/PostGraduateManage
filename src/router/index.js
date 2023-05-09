@@ -40,6 +40,7 @@ import teacherEditorGradeCourse from "@/views/Teacher/teacherGradeCourseManage/t
 import updateInfo from "@/components/updateInfo";
 import paper from '@/views/Student/paper/index'
 import selectTopic from "@/views/Student/paper/selectTopic"
+import openingReport from "@/views/Student/paper/openingReport"
 
 Vue.use(VueRouter)
 
@@ -338,6 +339,12 @@ const routes = [
             path: '/selectTopic',
             name: '选择课题',
             component: selectTopic,
+            meta: {requireAuth: true}
+          },
+          {
+            path:'/openingReport',
+            name:'开题报告',
+            component: openingReport,
             meta: {requireAuth: true}
           }
         ]
