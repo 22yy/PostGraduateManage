@@ -1,5 +1,5 @@
-{
-    "RECORDS": [
+module.exports = {
+    "data": [
         {
             "ctid": "5",
             "cid": "8",

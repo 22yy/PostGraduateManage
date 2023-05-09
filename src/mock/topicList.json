@@ -1,0 +1,36 @@
+{
+  "data": [
+    {
+      "name": "王小虎",
+      "direction": "计算机科学",
+      "sex": "女",
+      "phone": 12344678900,
+      "office": "计算机科学教研室",
+      "leftNumber": 3
+    },
+    {
+      "name": "王小虎",
+      "direction": "计算机科学",
+      "sex": "女",
+      "phone": 12344678900,
+      "office": "计算机科学教研室",
+      "leftNumber": 3
+    },
+    {
+      "name": "王小虎",
+      "direction": "计算机科学",
+      "sex": "女",
+      "phone": 12344678900,
+      "office": "计算机科学教研室",
+      "leftNumber": 3
+    },
+    {
+      "name": "王小虎",
+      "direction": "计算机科学",
+      "sex": "女",
+      "phone": 12344678900,
+      "office": "计算机科学教研室",
+      "leftNumber": 3
+    }
+  ]
+}

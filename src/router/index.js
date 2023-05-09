@@ -38,6 +38,8 @@ import teacherQueryGradeCourse from "@/views/Teacher/teacherGradeCourseManage/te
 import teacherGradeCourseList from "@/views/Teacher/teacherGradeCourseManage/teacherGradeCourseList";
 import teacherEditorGradeCourse from "@/views/Teacher/teacherGradeCourseManage/teacherEditorGradeCourse";
 import updateInfo from "@/components/updateInfo";
+import paper from '@/views/Student/paper/index'
+import selectTopic from "@/views/Student/paper/selectTopic"
 
 Vue.use(VueRouter)
 
@@ -322,6 +324,20 @@ const routes = [
             path: '/updateInfoHome',
             name: '编辑学生信息',
             component: updateInfo,
+            meta: {requireAuth: true}
+          }
+        ]
+      },
+      {
+        path:'/paper',
+        name:'论文管理',
+        component: paper,
+        meta: {requireAuth: true},
+        children:[
+          {
+            path: '/selectTopic',
+            name: '选择课题',
+            component: selectTopic,
             meta: {requireAuth: true}
           }
         ]

@@ -1,5 +1,5 @@
-{
-    "RECORDS": [
+module.exports = {
+    "data": [
         {
             "sctid": "10",
             "sid": "2",

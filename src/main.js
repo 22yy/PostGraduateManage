@@ -5,6 +5,7 @@ import router from './router'
 import store from './store'
 import './plugins/element.js'
 
+require('./mock'); //引入mock数据，关闭则注释该行
 Vue.config.productionTip = false
 
 new Vue({

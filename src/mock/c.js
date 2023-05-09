@@ -1,5 +1,5 @@
-{
-    "RECORDS": [
+module.exports = {
+    "data": [
         {
             "cid": "7",
             "cname": "数据结构",

@@ -1,5 +1,5 @@
-{
-    "RECORDS": [
+module.exports = {
+    "data": [
         {
             "tid": "4",
             "tname": "李玉民",

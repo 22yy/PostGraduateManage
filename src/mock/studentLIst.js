@@ -1,5 +1,5 @@
-{
-    "RECORDS": [
+module.exports = {
+    "data": [
         {
             "sid": "1",
             "sname": "阮健乘",
