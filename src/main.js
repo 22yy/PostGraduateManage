@@ -4,8 +4,12 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import './plugins/element.js'
-
+import './plugins/antd'
 require('./mock'); //引入mock数据，关闭则注释该行
+
+import {Message} from 'element-ui'
+Vue.prototype.$message = Message
+
 Vue.config.productionTip = false
 
 new Vue({

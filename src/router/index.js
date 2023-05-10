@@ -38,10 +38,16 @@ import teacherQueryGradeCourse from "@/views/Teacher/teacherGradeCourseManage/te
 import teacherGradeCourseList from "@/views/Teacher/teacherGradeCourseManage/teacherGradeCourseList";
 import teacherEditorGradeCourse from "@/views/Teacher/teacherGradeCourseManage/teacherEditorGradeCourse";
 import updateInfo from "@/components/updateInfo";
-import paper from '@/views/Student/paper/index'
-import selectTopic from "@/views/Student/paper/selectTopic"
-import openingReport from "@/views/Student/paper/openingReport"
 
+import paper from '@/views/Student/spaper/index'
+import selectTopic from "@/views/Student/spaper/selectTopic"
+import openingReport from "@/views/Student/spaper/openingReport"
+
+import tpaper from "@/views/Teacher/tpaper/index"
+import TReportProject from "@/views/Teacher/tpaper/TReportProject"
+import TVerifyProject from "@/views/Teacher/tpaper/TVerifyProject"
+import TProcessManager from '@/views/Teacher/tpaper/TProcessManager'
+import TScore from '@/views/Teacher/tpaper/TScore'
 Vue.use(VueRouter)
 
 const routes = [
@@ -248,6 +254,38 @@ const routes = [
             path: '/updateInfoHome',
             name: '编辑教师信息',
             component: updateInfo,
+            meta: {requireAuth: true}
+          }
+        ]
+      },
+      {
+        path: '/tpaper',
+        name: '论文管理',
+        component: tpaper,
+        meta: {requireAuth: true},
+        children: [
+          {
+            path: '/TReportProject',
+            name: '课题申报',
+            component: TReportProject,
+            meta: {requireAuth: true}
+          },
+          {
+            path: '/TVerifyProject',
+            name: '确认选题',
+            component: TVerifyProject,
+            meta: {requireAuth: true}
+          },
+          {
+            path: '/TProcessManager',
+            name: '流程管理',
+            component: TProcessManager,
+            meta: {requireAuth: true}
+          },
+          {
+            path: '/TScore',
+            name: '成绩评定',
+            component: TScore,
             meta: {requireAuth: true}
           }
         ]
