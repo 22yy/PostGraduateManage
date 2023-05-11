@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import login from '../views/login/index';
+//admin
 import admin from '../views/Admin/index';
 import adminHome from '../views/Admin/home';
 import studentManage from '../views/Admin/studentManage/index'
@@ -12,42 +13,60 @@ import addTeacher from "@/views/Admin/teacherManage/addTeacher";
 import editorTeacher from "@/views/Admin/teacherManage/editorTeacher";
 import courseManage from "@/views/Admin/courseManage/index";
 import addCourse from "@/views/Admin/courseManage/addCourse";
-import teacher from "@/views/Teacher/index";
-import queryStudent from "@/views/Admin/studentManage/queryStudent";
-import queryTeacher from "@/views/Admin/teacherManage/queryTeacher";
-import student from "@/views/Student/index";
 import editorCourse from "@/views/Admin/courseManage/editorCourse";
 import courseList from "@/views/Admin/courseManage/courseList";
 import queryCourse from "@/views/Admin/courseManage/queryCourse";
+import queryStudent from "@/views/Admin/studentManage/queryStudent";
+import queryTeacher from "@/views/Admin/teacherManage/queryTeacher";
+import CourseTeacherManage from "@/views/Admin/selectCourseManage/index";
+import queryCourseTeacher from "@/views/Admin/selectCourseManage/queryCourseTeacher";
+import queryGradeCourse from "@/views/Admin/gradeCourseManage/queryGradeCourse";
+import editorGradeCourse from "@/views/Admin/gradeCourseManage/editorGradeCourse";
+
+//teacher
+import teacher from "@/views/Teacher/index";
 import offerCourse from "@/views/Teacher/offerCourse";
 import teacherHome from "@/views/Teacher/home";
 import setCourse from "@/views/Teacher/setCourse";
-import studentHome from "@/views/Student/home";
 import myOfferCourse from "@/views/Teacher/myOfferCourse";
-import CourseTeacherManage from "@/views/Admin/selectCourseManage/index";
-import queryCourseTeacher from "@/views/Admin/selectCourseManage/queryCourseTeacher";
+import teacherGradeCourseManage from "@/views/Teacher/teacherGradeCourseManage/index";
+import teacherQueryGradeCourse from "@/views/Teacher/teacherGradeCourseManage/teacherQueryGradeCourse";
+import teacherGradeCourseList from "@/views/Teacher/teacherGradeCourseManage/teacherGradeCourseList";
+import teacherEditorGradeCourse from "@/views/Teacher/teacherGradeCourseManage/teacherEditorGradeCourse";
+
+//student
+import student from "@/views/Student/index";
+import studentHome from "@/views/Student/home";
 import studentSelectCourseManage from "@/views/Student/selectCourse/index";
 import selectCourse from "@/views/Student/selectCourse/selectCourse";
 import querySelectedCourse from "@/views/Student/selectCourse/querySelectedCourse";
 import studentCourseGrade from "@/views/Student/courseGrade/index";
 import queryCourseGrade from "@/views/Student/courseGrade/queryCourseGrade";
-import queryGradeCourse from "@/views/Admin/gradeCourseManage/queryGradeCourse";
-import editorGradeCourse from "@/views/Admin/gradeCourseManage/editorGradeCourse";
-import teacherGradeCourseManage from "@/views/Teacher/teacherGradeCourseManage/index";
-import teacherQueryGradeCourse from "@/views/Teacher/teacherGradeCourseManage/teacherQueryGradeCourse";
-import teacherGradeCourseList from "@/views/Teacher/teacherGradeCourseManage/teacherGradeCourseList";
-import teacherEditorGradeCourse from "@/views/Teacher/teacherGradeCourseManage/teacherEditorGradeCourse";
+
+
 import updateInfo from "@/components/updateInfo";
 
-import paper from '@/views/Student/spaper/index'
+//学生论文管理相关
+import spaper from '@/views/Student/spaper/index'
 import selectTopic from "@/views/Student/spaper/selectTopic"
 import openingReport from "@/views/Student/spaper/openingReport"
+import midTermInspection from '@/views/Student/spaper/midTermInspection'
+import paperDemo from '@/views/Student/spaper/paperDemo'
+import SScore from '@/views/Student/spaper/SScore'
+import SDownLoad from '@/views/Student/spaper/SDownLoad'
 
+//老师论文管理相关
 import tpaper from "@/views/Teacher/tpaper/index"
 import TReportProject from "@/views/Teacher/tpaper/TReportProject"
 import TVerifyProject from "@/views/Teacher/tpaper/TVerifyProject"
 import TProcessManager from '@/views/Teacher/tpaper/TProcessManager'
 import TScore from '@/views/Teacher/tpaper/TScore'
+
+//admin论文管理相关
+import paperManage from '@/views/Admin/topicManage/index'  
+import topicManage from '@/views/Admin/topicManage/topicManage'  
+import teacherTopic from '@/views/Admin/teacherManage/teacherTopic'
+import studentTopic from "@/views/Admin/studentManage/studentTopic"
 Vue.use(VueRouter)
 
 const routes = [
@@ -105,6 +124,12 @@ const routes = [
             meta: {requireAuth: true},
           },
           {
+            path:'/studentTopic',
+            name:'选题列表',
+            component: studentTopic,
+            meta: {requireAuth: true},
+          },
+          {
             path: '/editorStudent',
             name: '编辑学生',
             component: editorStudent,
@@ -142,13 +167,31 @@ const routes = [
             name: '教师列表',
             component: queryTeacher,
             meta: {requireAuth: true},
-            children: [
-            ]
+          },
+          {
+            path:'/teacherTopic',
+            name:'课题列表',
+            component:teacherTopic,
+            meta: {requireAuth: true},
           },
           {
             path: '/editorTeacher',
             name: '编辑教师',
             component: editorTeacher,
+            meta: {requireAuth: true}
+          },
+        ]
+      },
+      {
+        path: '/paperManage',
+        name: '选题管理',
+        component: paperManage,
+        meta: {requireAuth: true},
+        children:[
+          {
+            path: '/topicManage',
+            name: '选题管理',
+            component: topicManage,
             meta: {requireAuth: true}
           },
         ]
@@ -370,7 +413,7 @@ const routes = [
       {
         path:'/paper',
         name:'论文管理',
-        component: paper,
+        component: spaper,
         meta: {requireAuth: true},
         children:[
           {
@@ -384,7 +427,31 @@ const routes = [
             name:'开题报告',
             component: openingReport,
             meta: {requireAuth: true}
-          }
+          },
+          {
+            path:'/midTermInspection',
+            name:'中期检测',
+            component: midTermInspection,
+            meta: {requireAuth: true}
+          },
+          {
+            path:'/paperDemo',
+            name:'上传论文',
+            component:paperDemo,
+            meta:{requireAuth: true}
+          },
+          {
+            path:'/SScore',
+            name:'查看成绩',
+            component:SScore,
+            meta:{requireAuth: true}
+          },
+          {
+            path:'/SDownLoad',
+            name:'文件下载',
+            component:SDownLoad,
+            meta:{requireAuth: true}
+          }    
         ]
       },
       {

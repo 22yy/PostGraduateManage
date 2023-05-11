@@ -1,9 +1,9 @@
 <template>
     <div>
-        <a-card style="margin-top: 24px" :bordered="false" title="中期检测">
+        <a-card style="margin-top: 24px" :bordered="false" title="论文">
             <a-descriptions bordered>
                 <a-descriptions-item label="姓名">{{studentName}}</a-descriptions-item>
-                <a-descriptions-item label="学号">{{studentData.studentId}}</a-descriptions-item>
+                <a-descriptions-item label="学号">{{studentData}}</a-descriptions-item>
                 <a-descriptions-item label="班级">{{className}}</a-descriptions-item>
                 <a-descriptions-item label="选题">{{projectName}}</a-descriptions-item>
             </a-descriptions>
@@ -38,13 +38,10 @@ import {
 } from "@/api/student.js";
 import { requestProjectById } from "@/api/project.js";
 export default {
-    name: "SQzxj",
+    name: "SPaperdemo",
     data() {
         return {
-            fileList:[],
-            studentData: {
-                studentId:1
-            },
+            studentData: [],
             studentName: this.$store.state.userInfo.userName,
             projectName: "",
             className: "",

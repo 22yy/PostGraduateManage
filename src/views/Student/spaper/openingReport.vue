@@ -42,6 +42,7 @@ export default {
 	name: "SKtbg",
 	data() {
 			return {
+				    fileList:[],
 					studentData: [],
 					studentName: this.$store.state.userInfo.userName,
 					projectName: "",
@@ -54,30 +55,6 @@ export default {
 	},
 	created() {
 			this.getStudentData();
-	},
-
-	setup() {
-			const handleChange = info => {
-					// const status = info.file.status;
-
-					// if (status !== 'uploading') {
-					// 		console.log(info.file, info.fileList);
-					// }
-
-					// if (status === 'done') {
-					// 		message.success(`${info.file.name} file uploaded successfully.`);
-					// } else if (status === 'error') {
-					// 		message.error(`${info.file.name} file upload failed.`);
-					// }
-			};
-
-			return {
-					handleChange,
-					fileList: ref([]),
-					handleDrop: e => {
-							console.log(e);
-					},
-			};
 	},
 
 	methods: {
@@ -106,6 +83,22 @@ export default {
 					// 				console.log("Received values of form: ", values);
 					// 		}
 					// });
+			},
+			handleChange(info) {
+					// const status = info.file.status;
+
+					// if (status !== 'uploading') {
+					// 		console.log(info.file, info.fileList);
+					// }
+
+					// if (status === 'done') {
+					// 		message.success(`${info.file.name} file uploaded successfully.`);
+					// } else if (status === 'error') {
+					// 		message.error(`${info.file.name} file upload failed.`);
+					// }
+			},
+			handleDrop(e) {
+				console.log(e);
 			},
 	},
 };
