@@ -81,24 +81,24 @@ export default {
     },
     methods: {
         async fetchData() {
-            // this.listLoading = true;
-            // const result = await requestStudentList(this.queryForm);
-            // if (result.data.code == 1) {
-            //     this.data = result.data.data.data;
-            //     this.total = result.data.data.total;
-            // }
-            // await this.getStudentName();
-            // this.listLoading = false;
+            this.listLoading = true;
+            const result = await requestStudentList(this.queryForm);
+            if (result.data.code == 1) {
+                this.data = result.data.data.data;
+                this.total = result.data.data.total;
+            }
+            await this.getStudentName();
+            this.listLoading = false;
         },
 
         async getStudentName() {
-            // var index;
-            // for (index in this.data) {
-            //     const temp = this.data[index]
-            //     const res = await requestNameByStudentId(temp.studentId);
-            //     temp.studentName = res.data.data;
-            //     //temp["teacherName"]=res.data.data;
-            // }
+            var index;
+            for (index in this.data) {
+                const temp = this.data[index]
+                const res = await requestNameByStudentId(temp.studentId);
+                temp.studentName = res.data.data;
+                //temp["teacherName"]=res.data.data;
+            }
         },
         /**
          * @description 行内点击按钮编辑事件
@@ -107,31 +107,31 @@ export default {
          */
         clickEdit(record, type) {
             // 行外添加
-            // if (!record) {
-            //     this.$refs.editRef.showEdit(record);
-            // }
-            // // 行内编辑
-            // else if (type == "edit") {
-            //     // 启用子组件弹窗的showEdit事件，使弹窗显示
-            //     this.$refs.editRef.showEdit(record,type);
-            // }
-            // // 行内删除
-            // else if (type == "delete") {
-            //     Modal.confirm({
-            //         title: "你确定要删除吗?",
-            //         onOk() {
-            //             requestRemoveStudent(record.studentId).then((response)=>{
-            //                 if (response.data.code==1){
-            //                     message.success("删除成功");
-            //                 }else{
-            //                     message.error("删除失败");
-            //                 }
-            //             });
-            //             console.log("===调用删除接口===", record);
-            //         },
-            //         class: "test",
-            //     });
-            // }
+            if (!record) {
+                this.$refs.editRef.showEdit(record);
+            }
+            // 行内编辑
+            else if (type == "edit") {
+                // 启用子组件弹窗的showEdit事件，使弹窗显示
+                this.$refs.editRef.showEdit(record,type);
+            }
+            // 行内删除
+            else if (type == "delete") {
+                Modal.confirm({
+                    title: "你确定要删除吗?",
+                    onOk() {
+                        requestRemoveStudent(record.studentId).then((response)=>{
+                            if (response.data.code==1){
+                                message.success("删除成功");
+                            }else{
+                                message.error("删除失败");
+                            }
+                        });
+                        console.log("===调用删除接口===", record);
+                    },
+                    class: "test",
+                });
+            }
         },
 
         /**
@@ -140,8 +140,8 @@ export default {
          * @date 2022-04-27
          */
         handleCurrentChange(val) {
-            // this.queryForm.pageNum = val;
-            // this.fetchData(this.queryForm);
+            this.queryForm.pageNum = val;
+            this.fetchData(this.queryForm);
         },
 
         /**
@@ -150,8 +150,8 @@ export default {
          * @date 2022-04-27
          */
         onShowSizeChange(current, pageSize) {
-            // this.queryForm.pageSize = pageSize;
-            // this.fetchData(this.queryForm);
+            this.queryForm.pageSize = pageSize;
+            this.fetchData(this.queryForm);
         },
     }
 }

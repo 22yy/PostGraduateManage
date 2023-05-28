@@ -42,10 +42,9 @@
                     <template slot-scope="record">
                         <span v-if="record == null">
                             <a-input-search
-                                v-model:value="scort"
                                 placeholder="请输入成绩"
                                 enter-button="保存"
-                                size="smile"
+                                size="small"
                                 @search="saveScort"
                             />
                         </span>
@@ -81,9 +80,9 @@
 </template>
 
 <script>
-// import { requestTeacherByUserId } from "@/api/teacher.js"
-// import { requestStudentList, reqeustStudentListByTeacherId, requestNameByStudentId, requestRemoveStudent } from "@/api/student.js"
-// import { message, Modal } from "ant-design-vue";
+import { requestTeacherByUserId,requestTeacherByTeacherId } from "@/api/teacher.js"
+import { requestStudentList, reqeustStudentListByTeacherId, requestNameByStudentId, requestRemoveStudent } from "@/api/student.js"
+import { message, Modal } from "ant-design-vue";
 
 export default {
     name: "TScore",
@@ -94,6 +93,7 @@ export default {
 
     data() {
         return {
+            score:0,
             data: [],
             total: 0,
             // 查询列表数据条件
@@ -114,34 +114,37 @@ export default {
     },
     methods: {
         async fetchData() {
-            // this.listLoading = true;
-            // this.curUserId = this.$store.state.userInfo.userId;
-            // const teacherres = await requestTeacherByUserId(this.curUserId)
-            // this.teacherData = teacherres.data.data;
-            // //const result = await requestStudentList(this.queryForm);
-            // const result = await reqeustStudentListByTeacherId(this.teacherData.teacherId);
-            // if (result.data.code == 1) {
-            //     this.data = result.data.data;
-            // }
+            this.listLoading = true;
+            this.curUserId = sessionStorage.getItem('tid');
+            const teacherres = await requestTeacherByTeacherId(this.curUserId);
+            // console.log(teacherres);
+            this.teacherData = teacherres.data.data;
+            // console.log(this.teacherData);
+            //const result = await requestStudentList(this.queryForm);
+            const result = await reqeustStudentListByTeacherId(this.teacherData.teacherId);
+            // console.log(result);
+            if (result.data.code == 1) {
+                this.data = result.data.data;
+            }
             // await this.getStudentName();
-            // this.listLoading = false;
+            this.listLoading = false;
         },
 
         async getStudentName() {
-        //     var index;
-        //     for (index in this.data) {
-        //         const temp = this.data[index]
-        //         const res = await requestNameByStudentId(temp.studentId);
-        //         temp.studentName = res.data.data;
-        //         //temp["teacherName"]=res.data.data;
-        //     }
-        // },
-        // saveScort() {
-
-        // }
-
-     }
-
+            var index;
+            for (index in this.data) {
+                const temp = this.data[index]
+                const res = await requestNameByStudentId(temp.studentId);
+                console.log(res);
+                temp.studentName = res.data.data;
+                //temp["teacherName"]=res.data.data;
+            }
+        },
+        saveScort(value) {
+        //   console.log(value);
+         this.score = value;
+         console.log(this.score);
+        }
     }
 }
 </script>

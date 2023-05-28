@@ -59,13 +59,48 @@ export default {
     }
   },
  created() {
-  this.getTopicList()
+  // this.getTopicList()
  },
   data() {
     return {
       pageSize:10,
       total:100,
-      tableData: [],
+      tableData: [ {
+      "topic": "javjavajva",
+      "name": "王小虎",
+      "direction": "计算机科学",
+      "sex": "女",
+      "phone": 12344678900,
+      "office": "计算机科学教研室",
+      "leftNumber": 3
+    },
+    {
+      "topic": "javjavajva",
+      "name": "王小虎",
+      "direction": "计算机科学",
+      "sex": "女",
+      "phone": 12344678900,
+      "office": "计算机科学教研室",
+      "leftNumber": 3
+    },
+    {
+      "topic": "javjavajva",
+      "name": "王小虎",
+      "direction": "计算机科学",
+      "sex": "女",
+      "phone": 12344678900,
+      "office": "计算机科学教研室",
+      "leftNumber": 3
+    },
+    {
+      "topic": "javjavajva",
+      "name": "王小虎",
+      "direction": "计算机科学",
+      "sex": "女",
+      "phone": 12344678900,
+      "office": "计算机科学教研室",
+      "leftNumber": 3
+    }],
     };
   },
 };

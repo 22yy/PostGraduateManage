@@ -1,0 +1,37 @@
+{
+  "data": [
+      {
+          "teacherId": "4",
+          "teacherDescribe": "计算机科学方向",
+          "teacherProjectNum": "1",
+          "userId": "10001",
+          "deptId": "1",
+          "teacherName":"李玉民",
+          "zhicheng": "副教授"
+      },
+      {
+          "teacherId": "5",
+          "teacherDescribe": "大数据方向",
+          "teacherProjectNum": "",
+          "user_id": "10002",
+          "deptId": "2",
+          "zhicheng": "副教授"
+      },
+      {
+          "teacherId": "7",
+          "teacherDescribe": "Java方向",
+          "teacherProjectNum": "",
+          "user_id": "10003",
+          "deptId": "1",
+          "zhicheng": "副教授"
+      },
+      {
+          "teacherId": "9",
+          "teacherDescribe": "自然语言处理方向(NLP)",
+          "teacherProjectNum": "",
+          "user_id": "10005",
+          "deptId": "3",
+          "zhicheng": "教授"
+      }
+  ]
+}

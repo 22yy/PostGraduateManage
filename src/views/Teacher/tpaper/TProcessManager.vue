@@ -70,13 +70,13 @@
 </template>
 
 <script>
-// import { requestStudentProcessList } from "@/api/student.js";
-// import { requestTeacherByUserId } from "@/api/teacher.js";
+import { requestStudentProcessList } from "@/api/student.js";
+import { requestTeacherByUserId,requestTeacherByTeacherId } from "@/api/teacher.js";
 import ProcessDataInfoDialog from '../components/ProcessDataInfoDialog.vue';
-// import { message } from "ant-design-vue";
-// import { requestKtbg } from "@/api/ktbg.js"
-// import { requestLunwenById } from "@/api/lunwen.js"
-// import { reqeustGetQzxjById } from "@/api/qzxj.js"
+import { message } from "ant-design-vue";
+import { requestKtbg } from "@/api/ktbg.js"
+import { requestLunwenById } from "@/api/lunwen.js"
+import { reqeustGetQzxjById } from "@/api/qzxj.js"
 
 export default {
     name: "TProcessManager",
@@ -90,38 +90,41 @@ export default {
             teacherData: [],
         };
     },
-    // created() {
-    //     this.curUserId = this.$store.state.userInfo.userId;
-    //     this.curUserName = this.$store.state.userInfo.userName;
-    //     this.curUserTel = this.$store.state.userInfo.userTel;
-    //     this.fetchData();
-    // },
+    created() {
+        this.curUserId = sessionStorage.getItem('tid');
+        this.curUserName = sessionStorage.getItem('name');
+        // this.curUserTel = this.$store.state.userInfo.userTel;
+        this.fetchData();
+    },
     methods: {
         async fetchData() {
-            // const tresult = await requestTeacherByUserId(this.curUserId);
-            // this.teacherData = tresult.data.data;
-            // const dataresult = await requestStudentProcessList(
-            //     this.teacherData.teacherId
-            // );
-            // this.data = dataresult.data.data;
+            const tresult = await requestTeacherByTeacherId(this.curUserId);
+            this.teacherData = tresult.data.data;
+            // console.log(this.teacherData);
+            const dataresult = await requestStudentProcessList(
+                this.teacherData.teacherId
+            );
+            // console.log(dataresult);
+            this.data = dataresult.data.data;
         },
         async showData(record, type) {
-            // if (type == "ktbg") {
-            //     const res = await requestKtbg(record.ktbgId);
-            //     if (res.data.code == 1) {
-            //         this.$refs.editRef.showEdit(res.data.data,"开题报告");
-            //     }
-            // } else if (type = "qzxj") {
-            //     const res = await reqeustGetQzxjById(record.qzxjId);
-            //     if (res.data.code == 1) {
-            //         this.$refs.editRef.showEdit(res.data.data,"期中小结");
-            //     }
-            // } else if (type = "lunwen") {
-            //     const res = await requestLunwenById(record.lunwenId,"论文");
-            //     if (res.data.code == 1) {
-            //         this.$refs.editRef.showEdit(res.data.data);
-            //     }
-            // }
+            console.log("record",record);
+            if (type == "ktbg") {
+                const res = await requestKtbg(record.ktbgId);
+                if (res.data.code == 1) {
+                    this.$refs.editRef.showEdit(res.data.data,"开题报告");
+                }
+            } else if (type == "qzxj") {
+                const res = await reqeustGetQzxjById(record.qzxjId);
+                if (res.data.code == 1) {
+                    this.$refs.editRef.showEdit(res.data.data,"期中小结");
+                }
+            } else if (type == "lunwen") {
+                const res = await requestLunwenById(record.lunwenId);
+                if (res.data.code == 1) {
+                    this.$refs.editRef.showEdit(res.data.data,"论文");
+                }
+            }
         },
     },
 };

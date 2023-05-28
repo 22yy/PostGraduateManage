@@ -3,8 +3,9 @@
         <a-card style="margin-top: 24px" :bordered="false" title="查看成绩">
             <a-descriptions bordered>
                 <a-descriptions-item label="姓名">{{studentName}}</a-descriptions-item>
-                <a-descriptions-item label="学号">{{studentData}}</a-descriptions-item>
-                <a-descriptions-item label="选题">{{projectName}}</a-descriptions-item>
+                <a-descriptions-item label="学号">20202468</a-descriptions-item>
+                <!-- <a-descriptions-item label="班级">20级计科二班</a-descriptions-item> -->
+                <a-descriptions-item label="选题">未选择选题</a-descriptions-item>
                 <a-descriptions-item label="指导老师打分">{{studentData.score}}</a-descriptions-item>
             </a-descriptions>
         </a-card>
@@ -24,33 +25,33 @@ export default {
     data() {
         return {
             studentData: [],
-            studentName: this.$store.state.userInfo.userName,
+            studentName: sessionStorage.getItem('name'),
             projectName: "",
             className: "",
             temp: "", 
         };
     },
     created() {
-        this.getStudentData();
+        // this.getStudentData();
     },
     methods: {
         async getStudentData() {
-        //     const result = await requestCurrentStudentData();
-        //     this.studentData = result.data.data;
-        //     if (
-        //         (this.studentData.projectId != null) &
-        //         (this.studentData.projectId !== "")
-        //     ) {
-        //         requestProjectById(this.studentData.projectId).then(
-        //             (response) => {
-        //                 this.projectName = response.data.data.projectName;
-        //             }
-        //         );
-        //     } else {
-        //         this.projectName = "未选择选题";
-        //     }
-        //     const result2 = await requestClassName(this.studentData.studentId);
-        //     this.className = result2.data.data;
+            const result = await requestCurrentStudentData();
+            this.studentData = result.data.data;
+            if (
+                (this.studentData.projectId != null) &
+                (this.studentData.projectId !== "")
+            ) {
+                requestProjectById(this.studentData.projectId).then(
+                    (response) => {
+                        this.projectName = response.data.data.projectName;
+                    }
+                );
+            } else {
+                this.projectName = "未选择选题";
+            }
+            const result2 = await requestClassName(this.studentData.studentId);
+            this.className = result2.data.data;
         },
     },
 }

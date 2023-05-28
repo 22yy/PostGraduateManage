@@ -11,9 +11,9 @@
 
 <script>
 
-// import {
-//     requestDownList,
-// } from "@/api/login.js";
+import {
+    requestDownList,
+} from "@/api/login.js";
 
 export default {
     name: "SDownload",
@@ -28,9 +28,9 @@ export default {
     methods:{
         // 获取文件下载列表
         getDownList() {
-            // requestDownList({ pageNum: 0, pageSize: 5 }).then(response => {
-            //     this.downData = response.data.data.data;
-            // });
+            requestDownList({ pageNum: 0, pageSize: 5 }).then(response => {
+                this.downData = response.data.data.data;
+            });
         },
 
     }

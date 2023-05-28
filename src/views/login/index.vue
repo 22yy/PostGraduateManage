@@ -91,6 +91,7 @@ export default {
                   console.log("登陆页正在获取用户信息" + resp.data)
                   name = resp.data.tname
 
+
                   sessionStorage.setItem("token", 'true')
                   sessionStorage.setItem("type", that.ruleForm.type)
                   sessionStorage.setItem("name", name)

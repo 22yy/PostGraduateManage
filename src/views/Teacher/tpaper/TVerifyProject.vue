@@ -24,12 +24,12 @@
 </template>
 
 <script>
-// import {
-//     requestVerifyPorjectList,
-//     requestVerifyChoose,
-//     reqeustChangeNoSelect,
-// } from "@/api/project.js";
-// import { requestTeacherByUserId } from "@/api/teacher.js";
+import {
+    requestVerifyPorjectList,
+    requestVerifyChoose,
+    reqeustChangeNoSelect,
+} from "@/api/project.js";
+import { requestTeacherByUserId,requestTeacherByTeacherId } from "@/api/teacher.js";
 import { message } from "ant-design-vue";
 
 export default {
@@ -45,35 +45,37 @@ export default {
     },
     methods: {
         async fetchData() {
-            // const result = await requestTeacherByUserId(
-            //     this.$store.state.userInfo.userId
-            // );
-            // this.teacherData = result.data.data;
-            // const projectresult = await requestVerifyPorjectList(
-            //     this.teacherData.teacherId
-            // );
-            // this.VerifyData = projectresult.data.data;
+            const result = await requestTeacherByTeacherId(
+                sessionStorage.getItem('tid')
+            );
+            this.teacherData = result.data.data;
+            // console.log(this.teacherData);
+            const projectresult = await requestVerifyPorjectList(
+                this.teacherData.teacherId
+            );
+            this.VerifyData = projectresult.data.data;
+            // console.log(this.VerifyData);
         },
         verifyChoose(record) {
-            // requestVerifyChoose(record.projectId).then((response) => {
-            //     if (response.data.code == 1) {
-            //         message.success("成功");
-            //     } else {
-            //         message.error("失败");
-            //     }
-            // });
-            // this.fetchData();
+            requestVerifyChoose(record.projectId).then((response) => {
+                if (response.data.code == 1) {
+                    message.success("成功");
+                } else {
+                    message.error("失败");
+                }
+            });
+            this.fetchData();
         },
 
         disagree(record) {
-            // reqeustChangeNoSelect(record.projectId).then((response) => {
-            //     if (response.data.code == 1) {
-            //         message.success("成功");
-            //     } else {
-            //         message.error("失败");
-            //     }
-            // });
-            // this.fetchData();
+            reqeustChangeNoSelect(record.projectId).then((response) => {
+                if (response.data.code == 1) {
+                    message.success("成功");
+                } else {
+                    message.error("失败");
+                }
+            });
+            this.fetchData();
         },
     },
 };

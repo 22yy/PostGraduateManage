@@ -101,7 +101,7 @@ import Edit from "./components/AProjectEditDialog.vue";
 import { requestProjectList, requestDelete } from "@/api/project.js"
 import { requestNameByStudentId } from "@/api/student.js"
 import { requestNameByTeacherId } from "@/api/teacher.js";
-import { message } from "ant-design-vue";
+import { message,Modal } from "ant-design-vue";
 export default {
     name: "AProject",
     components: { Edit },
@@ -127,69 +127,70 @@ export default {
          * @author Cui Ruichen
          * @date 2022-04-29
          */
-        clickEdit(record) {
-            // // 行外添加
-            // if (!record) {
-            //     this.$refs.editRef.showEdit();
-            // }
-            // // 行内编辑
-            // else if (type == "edit") {
-            //     // 启用子组件弹窗的showEdit事件，使弹窗显示
-            //     this.$refs.editRef.showEdit(record, type);
-            // }
-            // // 行内删除
-            // else if (type == "delete") {
-            //     Modal.confirm({
-            //         title: "你确定要删除吗?",
-            //         onOk() {
-            //             requestDelete(record.projectId).then((response) => {
-            //                 if (response.data.code == 1) {
-            //                     message.success("删除成功");
-            //                 } else {
-            //                     message.error("删除失败");
-            //                 }
-            //             });
-            //             console.log("===调用删除接口===", record);
-            //         },
-            //         class: "test",
-            //     });
-            // }
+        clickEdit(record, type) {
+            // 行外添加
+            if (!record) {
+                this.$refs.editRef.showEdit();
+            }
+            // 行内编辑
+            else if (type == "edit") {
+                // 启用子组件弹窗的showEdit事件，使弹窗显示
+                this.$refs.editRef.showEdit(record, type);
+            }
+            // 行内删除
+            else if (type == "delete") {
+                Modal.confirm({
+                    title: "你确定要删除吗?",
+                    onOk() {
+                        requestDelete(record.projectId).then((response) => {
+                            if (response.data.code == 1) {
+                                message.success("删除成功");
+                            } else {
+                                message.error("删除失败");
+                            }
+                        });
+                        console.log("===调用删除接口===", record);
+                    },
+                    class: "test",
+                });
+            }
         },
 
         async fetchData() {
-            // this.listLoading = true;
-            // const res = await requestProjectList(this.queryForm.pageSize, this.queryForm.pageNum);
-            // if (res.data.code == 1) {
-            //     this.data = res.data.data.data;
-            //     this.total = res.data.data.total;
-            // }
-            // this.getStudentName();
-            // this.getTeacherName();
-            // this.listLoading = false;
+            this.listLoading = true;
+            const res = await requestProjectList(this.queryForm.pageSize, this.queryForm.pageNum);
+            console.log(res);
+            if (res.data.code == 1) {
+                this.data = res.data.data.data;
+                this.total = res.data.data.total;
+            }
+            this.getStudentName();
+            this.getTeacherName();
+            this.listLoading = false;
         },
         async getStudentName() {
-            // var index;
-            // for (index in this.data) {
-            //     const temp = this.data[index]
-            //     if (temp.studentId != null) {
-            //         const res = await requestNameByStudentId(temp.studentId);
-            //         if (res.data.code == 1) {
-            //             temp.studentName = res.data.data;
-            //         }
-            //     }
-            // }
+            var index;
+            for (index in this.data) {
+                const temp = this.data[index]
+                if (temp.studentId != null) {
+                    const res = await requestNameByStudentId(temp.studentId);
+                    if (res.data.code == 1) {
+                        temp.studentName = res.data.data;
+                    }
+                }
+            }
         },
         async getTeacherName() {
-            // var index;
-            // for (index in this.data) {
-            //     const temp = this.data[index]
-            //     if (temp.teacherId != null) {
-            //         const res = await requestNameByTeacherId(temp.teacherId);
-            //         if (res.data.code == 1) {
-            //             temp.teacherName = res.data.data;
-            //         }
-            //     }
-            // }
+            var index;
+            for (index in this.data) {
+                const temp = this.data[index]
+                if (temp.teacherId != null) {
+                    const res = await requestNameByTeacherId(temp.teacherId);
+                    if (res.data.code == 1) {
+                        temp.teacherName = res.data.data;
+                    }
+                }
+            }
         },
     }
 };

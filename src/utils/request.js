@@ -1,18 +1,18 @@
 import axios from "axios";
-// import store from "@/store/store";
+import store from "@/store/store";
 const request = axios.create({
-    baseURL: "http://localhost:8082/",
+    baseURL: "",
     headers: { "Content-Type": "application/json" },
-    timeout: 6000
+    // timeout: 6000,
     // headers.common["token"] = store.state.token;
 });
 
-//添加请求拦截器s
+//添加请求拦截器
 request.interceptors.request.use(
     function(config) {
         // //在请求之前做些什么
         // //判断是否存在token,如果存在则将每个页面的header中添加token,
-        // config.headers.common["satoken"] = store.state.token;
+        config.headers.common["satoken"] = store.state.token;
         return config;
     },
     function(error) {

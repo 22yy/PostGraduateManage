@@ -1,0 +1,31 @@
+{
+ "data":[
+  {
+    "userName":"sfsdf",
+    "studentId":"1",
+    "className":"20级计科二班",
+    "tel":"123456789102",
+    "projectName":"java",
+    "projectId":1,
+    "projectState":1
+  },
+  {
+    "userName":"sfsdf",
+    "studentId":"1",
+    "className":"20级计科二班",
+    "tel":"123456789102",
+    "projectName":"java",
+    "projectId":1,
+    "projectState":0
+  },
+  {
+    "userName":"sfsdf",
+    "studentId":"1",
+    "className":"20级计科二班",
+    "tel":"123456789102",
+    "projectName":"java",
+    "projectId":1,
+    "projectState":2
+  }
+ ]
+}

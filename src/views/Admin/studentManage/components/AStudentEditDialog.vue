@@ -36,7 +36,7 @@
                 >
                     <a-input
                         v-model="form.studentScore"
-                        placeholder="请输入用户密码"
+                        placeholder="请输入成绩"
                     />
                 </a-form-model-item>
             </a-form-model>

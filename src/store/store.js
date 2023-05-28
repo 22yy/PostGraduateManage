@@ -2,7 +2,6 @@
 //vuex是一个状态管理模式，集中式管理所有组件(共享)的状态，
 import Vue from "vue";
 import Vuex from "vuex";
-Vue.use(Vuex);
 
 //state中的数据必须通过mutations修改
 Vue.use(Vuex);
